@@ -126,7 +126,12 @@ DB.prototype.ExecTransTasks = function (dbtasks, callback, constring){
   constring._driver.ExecTransTasks(dbtasks, callback, constring);
 };
 
-exports = module.exports = DB;
 DB.types = types;
 DB.util = util;
 DB.ParseSQL = util.ParseSQL;
+DB.log = function(txt){
+  if(global.log) global.log(txt);
+  else console.log(txt);
+}
+
+exports = module.exports = DB;

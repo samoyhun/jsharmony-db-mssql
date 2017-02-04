@@ -51,4 +51,11 @@ describe('Basic',function(){
     assert((DB.util.ReplaceAll('abcdefabc','abc','def')=='defdefdef'),'Success');
     done();
   });
+  it('Log', function (done) {
+    var did_log = false;
+    global.log = function(){ did_log = true; }
+    DB.log('Test Log');
+    assert(did_log,'Success');
+    done();
+  });
 });

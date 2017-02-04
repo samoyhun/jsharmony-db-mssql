@@ -24,6 +24,7 @@ var assert = require('assert');
 describe('Basic',function(){
   it('Select', function (done) {
     //Connect to database and get data
+    this.timeout(30000);
     var C_ID = '1';
     global.dbconfig = { _driver: new JSHmssql(), server: "server.domain.com", database: "DBNAME", user: "DBUSER", password: "DBPASS" };
     var db = new JSHdb();
