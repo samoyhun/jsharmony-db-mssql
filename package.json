@@ -1,0 +1,36 @@
+{
+  "name": "jsharmony-db-mssql",
+  "version": "1.0.0",
+  "description": "jsHarmony Database Connector for SQL Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apHarmony/jsharmony-db-mssql"
+  },
+  "keywords": [
+    "jsHarmony",
+    "Database",
+    "Driver",
+    "SQL Server",
+    "mssql"
+  ],
+  "author": "apHarmony <contact@apharmony.com> (http://www.apharmony.com/)",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/apHarmony/jsharmony-db-mssql/issues"
+  },
+  "homepage": "https://github.com/apHarmony/jsharmony-db-mssql",
+  "dependencies": {
+    "jsharmony-db": "^1.0.3",
+    "async": "^2.1.4",
+    "lodash": "^4.14.0",
+    "moment": "^2.17.1",
+    "mssql": "^3.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
+  }
+}
