@@ -26,11 +26,11 @@ describe('Basic',function(){
     //Connect to database and get data
     this.timeout(30000);
     var C_ID = '1';
-    global.dbconfig = { _driver: new JSHmssql(), server: "server.domain.com", database: "DBNAME", user: "DBUSER", password: "DBPASS" };
-    var db = new JSHdb();
+    var dbconfig = { _driver: new JSHmssql(), server: "server.domain.com", database: "DBNAME", user: "DBUSER", password: "DBPASS" };
+    var db = new JSHdb(dbconfig);
     db.Recordset('','select * from C where C_ID=@C_ID',[JSHdb.types.BigInt],{'C_ID': C_ID},function(err,rslt){
       assert((rslt && rslt.length && (rslt[0].C_ID==C_ID)),'Success');
-      done();
+      db.Close(done);
     });
   });
 });

@@ -13,8 +13,8 @@ npm install jsharmony-db-mssql --save
 ```javascript
 var JSHmssql = require('jsharmony-db-mssql');
 var JSHdb = require('jsharmony-db');
-global.dbconfig = { _driver: new JSHmssql(), server: "server.domain.com", database: "DBNAME", user: "DBUSER", password: "DBPASS" };
-var db = new JSHdb();
+var dbconfig = { _driver: new JSHmssql(), server: "server.domain.com", database: "DBNAME", user: "DBUSER", password: "DBPASS" };
+var db = new JSHdb(dbconfig);
 db.Recordset('','select * from C where C_ID >= @C_ID',[JSHdb.types.BigInt],{'C_ID': 10},function(err,rslt){
   console.log(rslt);
   done();
