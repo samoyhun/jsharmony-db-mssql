@@ -24,6 +24,7 @@ var path = require('path');
 var fs = require('fs');
 var _ = require('lodash');
 var os = require('os');
+var moment = require('moment');
 
 var dbconfig = { };
 
@@ -366,6 +367,22 @@ describe('Basic',function(){
     db.SQLExt.Scripts['test']['dropfakedb'] = ["drop database if exists fakedbthatdoesnotexist"];
     db.RunScripts(db.platform, ['test','dropfakedb'],{},function(err,rslt,stats){
       assert(!err,'Success');
+      return done();
+    });
+  });
+  it('Date passthru', function (done) {
+    //Connect to database and get data
+    db.Scalar('','select convert(varchar,@dt,101)',[JSHdb.types.Date],{'dt': moment('2018-12-03').toDate()},function(err,rslt){
+      assert(!err,'Success');
+      assert(rslt=='12/03/2018','Date passthru');
+      return done();
+    });
+  });
+  it('DateTime passthru', function (done) {
+    //Connect to database and get data
+    db.Scalar('','select convert(varchar,@dt,101)',[JSHdb.types.DateTime(7)],{'dt': moment('2018-12-03').toDate()},function(err,rslt){
+      assert(!err,'Success');
+      assert(rslt=='12/03/2018','Date passthru');
       return done();
     });
   });
