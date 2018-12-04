@@ -372,7 +372,7 @@ describe('Basic',function(){
   });
   it('Date passthru', function (done) {
     //Connect to database and get data
-    db.Scalar('','select convert(varchar,@dt,101)',[JSHdb.types.Date],{'dt': moment('2018-12-03').toDate()},function(err,rslt){
+    db.Scalar('','select convert(varchar,cast(@dt as date),101)',[JSHdb.types.Date],{'dt': moment('2018-12-03').toDate()},function(err,rslt){
       assert(!err,'Success');
       assert(rslt=='12/03/2018','Date passthru');
       return done();
@@ -380,7 +380,7 @@ describe('Basic',function(){
   });
   it('DateTime passthru', function (done) {
     //Connect to database and get data
-    db.Scalar('','select convert(varchar,@dt,101)',[JSHdb.types.DateTime(7)],{'dt': moment('2018-12-03').toDate()},function(err,rslt){
+    db.Scalar('','select convert(varchar,cast(@dt as date),101)',[JSHdb.types.DateTime(7)],{'dt': moment('2018-12-03').toDate()},function(err,rslt){
       assert(!err,'Success');
       assert(rslt=='12/03/2018','Date passthru');
       return done();
