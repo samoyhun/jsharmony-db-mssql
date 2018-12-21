@@ -43,10 +43,10 @@ var db = new JSHdb(dbconfig);
 describe('Basic',function(){
   it('Select Parameter', function (done) {
     //Connect to database and get data
-    var C_ID = '1';
-    db.Recordset('','select @C_ID C_ID',[JSHdb.types.BigInt],{'C_ID': C_ID},function(err,rslt){
+    var c_id = '1';
+    db.Recordset('','select @c_id c_id',[JSHdb.types.BigInt],{'c_id': c_id},function(err,rslt){
       assert(!err,'Success');
-      assert((rslt && rslt.length && (rslt[0].C_ID==C_ID)),'Parameter returned correctly');
+      assert((rslt && rslt.length && (rslt[0].c_id==c_id)),'Parameter returned correctly');
       return done();
     });
   });
@@ -60,10 +60,10 @@ describe('Basic',function(){
   });
   it('Row', function (done) {
     //Connect to database and get data
-    var C_ID = '1';
-    db.Row('',tempTable+'select * from #c where c_id=@C_ID;',[JSHdb.types.BigInt],{'C_ID': C_ID},function(err,rslt){
+    var c_id = '1';
+    db.Row('',tempTable+'select * from #c where c_id=@c_id;',[JSHdb.types.BigInt],{'c_id': c_id},function(err,rslt){
       assert(!err,'Success');
-      assert(rslt && (rslt.c_id==C_ID),'Recordset correct');
+      assert(rslt && (rslt.c_id==c_id),'Recordset correct');
       return done();
     });
   });

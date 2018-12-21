@@ -15,7 +15,7 @@ var JSHmssql = require('jsharmony-db-mssql');
 var JSHdb = require('jsharmony-db');
 var dbconfig = { _driver: new JSHmssql(), server: "server.domain.com", database: "DBNAME", user: "DBUSER", password: "DBPASS" };
 var db = new JSHdb(dbconfig);
-db.Recordset('','select * from C where C_ID >= @C_ID',[JSHdb.types.BigInt],{'C_ID': 10},function(err,rslt){
+db.Recordset('','select * from c where c_id >= @c_id',[JSHdb.types.BigInt],{'c_id': 10},function(err,rslt){
   console.log(rslt);
   done();
 });
