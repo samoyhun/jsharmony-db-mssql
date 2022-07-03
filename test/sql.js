@@ -36,6 +36,13 @@ if(fs.existsSync(path_TestDBConfig)){
 dbconfig = _.extend({_driver: new JSHmssql(), host: "server.domain.com", database: "DBNAME", user: "DBUSER", password: "DBPASS", options: { pooled: true }, pool: { max: 1 } },dbconfig);
 var db = new JSHdb(dbconfig);
 
+var sqlFuncs = {
+  DropTableIfExists: {
+    params: ['TABLE'],
+    sql: "IF OBJECT_ID('%%%TABLE%%%', 'U') is not null drop table %%%TABLE%%%",
+  }
+};
+
 describe('MSSQL forms',function(){
-  shouldGenerateFormSql(db, JSHdb, 'integer primary key identity');
+  shouldGenerateFormSql(db, JSHdb, 'integer primary key identity', 'timestamp', sqlFuncs);
 });
